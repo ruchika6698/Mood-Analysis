@@ -5,7 +5,7 @@ namespace Mood_Analyzer_Problem
     class MoodAnalyse
     {
         private String message;
-        
+
         /// <summary>
         /// Constructor for mood Message
         /// </summary>
@@ -31,7 +31,12 @@ namespace Mood_Analyzer_Problem
         {
             try
             {
-                if (message.Contains("I am in sad mood"))
+                // if legnth of message = 0 throw  Empty_Exception
+                if (message.Length == 0)
+                {
+                    throw new MoodAnalysisException(MoodAnalysisException.MoodException.Entered_Empty, " please enter proper moood");
+                }
+                if (message.Contains("SAD", StringComparison.OrdinalIgnoreCase))
                 {
                     return "SAD";
                 }
@@ -40,10 +45,9 @@ namespace Mood_Analyzer_Problem
                     return "HAPPY";
                 }
             }
-            catch (NullReferenceException Null)
+            catch (NullReferenceException excep)
             {
-                Console.WriteLine("Null");
-                return "HAPPY";
+                throw new MoodAnalysisException(MoodAnalysisException.MoodException.Entered_Full, " please enter proper moood");
             }
         }
 
