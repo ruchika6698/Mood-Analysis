@@ -29,7 +29,8 @@ namespace Mood_Analyzer_Problem
         /// </summary>
         public String Mood()
         {
-            
+            try
+            {
                 if (message.Contains("I am in sad mood"))
                 {
                     return "SAD";
@@ -38,7 +39,12 @@ namespace Mood_Analyzer_Problem
                 {
                     return "HAPPY";
                 }
-           
+            }
+            catch (NullReferenceException Null)
+            {
+                Console.WriteLine("Null");
+                return "HAPPY";
+            }
         }
 
         /// <summary>
