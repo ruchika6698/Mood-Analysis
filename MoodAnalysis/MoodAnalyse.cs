@@ -31,12 +31,7 @@ namespace Mood_Analyzer_Problem
         {
             try
             {
-                // if legnth of message = 0 throw  Empty_Exception
-                if (message.Length == 0)
-                {
-                    throw new MoodAnalysisException(MoodAnalysisException.MoodException.Entered_Empty, " please enter proper moood");
-                }
-                if (message.Contains("SAD", StringComparison.OrdinalIgnoreCase))
+                if (message.Contains("I am in sad mood"))
                 {
                     return "SAD";
                 }
@@ -45,9 +40,10 @@ namespace Mood_Analyzer_Problem
                     return "HAPPY";
                 }
             }
-            catch (NullReferenceException excep)
+            catch (NullReferenceException Null)
             {
-                throw new MoodAnalysisException(MoodAnalysisException.MoodException.Entered_Full, " please enter proper moood");
+                Console.WriteLine("Null");
+                return "HAPPY";
             }
         }
 
@@ -56,9 +52,9 @@ namespace Mood_Analyzer_Problem
         /// </summary>
         static void Main(string[] args)
         {
-           Console.WriteLine("Welcome to Mood Analyzer Problem");
-           MoodAnalyse moodanalyse = new MoodAnalyse();
-           moodanalyse.Mood("HAPPY");
+            Console.WriteLine("Welcome to Mood Analyzer Problem");
+            MoodAnalyse moodanalyse = new MoodAnalyse();
+            moodanalyse.Mood("HAPPY");
         }
     }
 }

@@ -11,7 +11,10 @@ namespace Mood_Analyzer_Problem
         {
             Entered_Null,
             Entered_Empty,
-            Entered_Full
+            Null,
+            Class_Not_Found,
+            No_SuchMethod,
+            Error_in_Object_Creation
         }//end: public enum MoodException
 
         MoodException exception_type;
