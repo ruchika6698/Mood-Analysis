@@ -1,11 +1,15 @@
-﻿using Mood_Analyzer_Problem;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Mood_Analyzer_Problem;
+using System;
+using System.Reflection;
 
 namespace TestCases
 {
     [TestFixture]
     public class TestCases
     {
+        public object MoodAnalyserReflactor { get; private set; }
+
         /// <summary>
         /// TestCase 1.1
         /// Analyses the sad mood when sad return sad.
@@ -130,6 +134,17 @@ namespace TestCases
             Assert.AreEqual(Reflactionobject, Expected);
         }
 
+        /// <summary>
+        /// TestCse_6.1
+        /// Invokes the method using reflection should return happy.
+        /// </summary>
+        [Test]
+        public void InvokeMethodUsingReflection_shouldReturnHappy()
+        {
+            string actual = MoodAnalyserReflactor.InvokeMethodUsingReflection();
+            string Expected = "HAPPY";
+            Assert.AreEqual(actual, Expected);
+        }
 
     }
 }

@@ -66,7 +66,6 @@ namespace Mood_Analyzer_Problem
 
 
         }
-
         /// <summary>
         /// Main Method
         /// </summary>
@@ -75,10 +74,6 @@ namespace Mood_Analyzer_Problem
             Console.WriteLine("Welcome to Mood Analyzer Problem");
             MoodAnalyse moodanalyse = new MoodAnalyse();
             moodanalyse.Mood("HAPPY");
-        }
-        internal double AnalyseMood()
-        {
-            throw new NotImplementedException();
         }
     }
 }
