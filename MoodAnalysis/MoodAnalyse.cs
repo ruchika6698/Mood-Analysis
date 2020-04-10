@@ -1,20 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Mood_Analyzer_Problem
 {
-    class MoodAnalyse
+    public class MoodAnalyse
     {
-        private String message;
-
+        public string message;
         /// <summary>
-        /// Constructor for mood Message
+        /// non_paramatrized_Constructer
         /// </summary>
-        public MoodAnalyse(String message)
+        public MoodAnalyse()
         {
-            this.message = message;
+
         }
 
-        public MoodAnalyse()
+        public MoodAnalyse(string v)
         {
         }
 
@@ -25,26 +26,45 @@ namespace Mood_Analyzer_Problem
         }
 
         /// <summary>
-        /// Method to Check Mood Sad or Happy and Exception for Invalid Mood
+        /// Checking null reference Exception
         /// </summary>
-        public String Mood()
+        /// <returns></returns>
+        public string Mood()
         {
             try
             {
-                if (message.Contains("I am in sad mood"))
+                if (message == null)
+                {
+                    throw new MoodAnalysisException("Exception present is:-" + Exception_type.Null_Exception);
+                }
+                else if (this.message == "")
+                {
+                    throw new MoodAnalysisException("Exception present:-" + Exception_type.Empty_Exception);
+                }
+                else if (message.ToLower().Contains("sad"))
                 {
                     return "SAD";
                 }
                 else
-                {
                     return "HAPPY";
-                }
             }
-            catch (NullReferenceException Null)
+            catch (MoodAnalysisException ex)
             {
-                Console.WriteLine("Null");
                 return "HAPPY";
             }
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (this.GetType().Equals(((MoodAnalyse)obj).GetType()))
+                return true;
+            return false;
+
+
         }
 
         /// <summary>
@@ -55,6 +75,10 @@ namespace Mood_Analyzer_Problem
             Console.WriteLine("Welcome to Mood Analyzer Problem");
             MoodAnalyse moodanalyse = new MoodAnalyse();
             moodanalyse.Mood("HAPPY");
+        }
+        internal double AnalyseMood()
+        {
+            throw new NotImplementedException();
         }
     }
 }

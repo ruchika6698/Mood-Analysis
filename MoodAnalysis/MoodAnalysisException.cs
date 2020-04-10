@@ -1,32 +1,30 @@
 ﻿using System;
-using System.Runtime.Serialization;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Mood_Analyzer_Problem
 {
-    [Serializable]
-    internal class MoodAnalysisException : Exception
+    public enum Exception_type
     {
-        // enumaration for comstum exceptions
-        public enum MoodException
+        Null_Exception,
+        Empty_Exception,
+        Invalid_exception,
+        No_Such_class_Exception,
+        No_Such_Method_Exception,
+    }
+    public class MoodAnalysisException : ApplicationException
+    {
+        public MoodAnalysisException(string message) : base(message)
         {
-            Entered_Null,
-            Entered_Empty,
-            Null,
-            Class_Not_Found,
-            No_SuchMethod,
-            Error_in_Object_Creation
-        }//end: public enum MoodException
 
-        MoodException exception_type;
-
-        /// <summary>
-        /// MoodAnalysisException Constructor for initiate base class message 
-        /// </summary>
-        /// <param name="exception_type"></param>
-        /// <param name="ex_message"></param>
-        public MoodAnalysisException(MoodException exception_type, string ex_message) : base(ex_message)
-        {
-            this.exception_type = exception_type;
         }
     }
+    public class ConstructerMissingException : ApplicationException
+    {
+        public ConstructerMissingException(string message) : base(message)
+        {
+
+        }
+    }
+
 }
