@@ -8,13 +8,16 @@ namespace MoodAnalyzer
     {
         public string message;
         /// <summary>
-        /// non_paramatrized_Constructer
+        /// non paramatrized Constructer
         /// </summary>
         public MoodAnalyse()
         {
 
         }
 
+        /// <summary>
+        /// paramatrized_Constructer
+        /// </summary>
         public MoodAnalyse(string message)
         {
             this.message = message;
@@ -31,10 +34,12 @@ namespace MoodAnalyzer
             {
                 if (this.message == null)
                 {
+                    //if message i null then throw empty exception
                     throw new MoodAnalysisException("Exception present:-" + Exception_type.Empty_Exception);
                 }
                 if (message.Contains("Sad"))
                 {
+                    //if message sad then return sad
                     return "SAD";
                 }
                 else

@@ -15,7 +15,6 @@ namespace MoodAnalyzer
         No_Such_class_Exception,
         No_Such_Method_Exception,
         No_Such_Field_Exception,
-
     }
     
     public class MoodAnalysisException : Exception

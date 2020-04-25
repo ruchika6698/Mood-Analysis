@@ -38,33 +38,34 @@ namespace MoodAnalyzer
         /// </summary>
         public static string InvokeMethodUsingReflection(string methodName, string fieldName)
         {
-
             Assembly assembly = Assembly.GetExecutingAssembly();
             Type moodAnalysertype = Type.GetType("MoodAnalyzer.MoodAnalyse");
             MethodInfo methodInfo = moodAnalysertype.GetMethod(methodName);
 
-           
-                string[] stringArray = { "I am in Happy mood" };
-                object objectInstance = Activator.CreateInstance(moodAnalysertype, stringArray);
+            string[] stringArray = { "I am in Happy mood" };
+            object objectInstance = Activator.CreateInstance(moodAnalysertype, stringArray);
             try
-            {
+            { 
                 if (fieldName != null)
                 {
                     FieldInfo fieldInfo = moodAnalysertype.GetField(fieldName);
                     if (fieldInfo == null)
+                    {
+                        //if field infomation is null then throw no such field exception
                         throw new MoodAnalysisException("" + Exception_type.No_Such_Field_Exception);
+                    }
                     fieldInfo.SetValue(objectInstance, fieldName);
                 }
             }
             catch (MoodAnalysisException)
             {
                 return "No_Such_Field_Exception";
-
             }
             try
             {
                 if (fieldName == null)
                 {
+                    //if field name is null then throw null exception
                     throw new MoodAnalysisException(Exception_type.Null_Exception.ToString());
                 }
             }
@@ -76,16 +77,15 @@ namespace MoodAnalyzer
             {
                 if (methodInfo == null)
                 {
+                    //if field method is null then throw no such method exception
                     throw new MoodAnalysisException("" + Exception_type.No_Such_Method_Exception);
                 }
-
                 string method = (string)methodInfo.Invoke(objectInstance, null);
                 return method;
             }
             catch (MoodAnalysisException)
             {
                 return "HAPPY";
-                
             }
         }
     }

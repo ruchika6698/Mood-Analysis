@@ -7,10 +7,10 @@ namespace MoodAnalyzer
     public class UnitTest1
     {
         /// <summary>
-        /// TestCase 1.1:Analyses the sad mood when sad return sad 
+        /// TestCase 1.1:Analyses the sad mood when sad then return sad 
         /// </summary>
         [Fact]
-        public void AnalyseMood_WhenSadReturnSad()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenSadReturnSad()
         {
             MoodAnalyse moodobj = new MoodAnalyse("I am in Sad mood");
             string actual = moodobj.Mood();
@@ -18,20 +18,20 @@ namespace MoodAnalyzer
             Assert.Equal(Expected, actual);
         }
         /// <summary>
-        /// TestCase_1.2:Analyses the mood when happy mood return happy.
+        /// TestCase_1.2:Analyses the mood when happy then mood return happy.
         /// </summary>
         [Fact]
-        public void AnalyseMood_WhenHappyMoodReturnHappy()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenHappyMoodReturnHappy()
         {
             MoodAnalyse moodobj = new MoodAnalyse("I am in happy mood");
             string Expected = "HAPPY";
             Assert.Equal(Expected, moodobj.Mood());
         }
         /// <summary>
-        /// TestCase-2.1:Analyses the mood when null mood return happy
+        /// TestCase-2.1:Analyses the mood when null then mood return happy
         /// </summary>
         [Fact]
-        public void AnalyseMood_WhenNullMoodReturnHappy()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenNullMoodReturnHappy()
         {
             MoodAnalyse moodobj = new MoodAnalyse(null);
             string Expected = "HAPPY";
@@ -41,7 +41,7 @@ namespace MoodAnalyzer
         /// TESTCASE_3.1:Analyses the mood when null throw exception mood return happy.
         /// </summary>
         [Fact]
-        public void AnalyseMood_WhenNullThrowMoodAnalysisException()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenNullThrowMoodAnalysisException()
         {
             MoodAnalyse moodobj = new MoodAnalyse(null);
             string Expected = "HAPPY";
@@ -49,10 +49,10 @@ namespace MoodAnalyzer
         }
         /// <summary>
         /// TestCase_3.2
-        /// Analyses the mood when null throw exception mood return happy.
+        /// Analyses the mood when null throw exception mood return happy
         /// </summary>
         [Fact]
-        public void AnalyseMood_WhenEmptyThrowMoodAnalysisException()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenEmptyThrowMoodAnalysisException()
         {
             MoodAnalyse moodobj = new MoodAnalyse(" ");
             string Expected = "HAPPY";
@@ -63,7 +63,7 @@ namespace MoodAnalyzer
         /// check two_object are equal
         /// </summary>
         [Fact]
-        public void CreatObjectUsingRef_AnalyserMoodObjectTest()
+        public void GiventheMoodmessage_WhenAnalyseMood_AnalyserMoodObjectTest()
         {
 
             object obj = MoodAnalyzerReflactor.CreateObjectUsingReflection("MoodAnalyzer.MoodAnalyse");
@@ -76,7 +76,7 @@ namespace MoodAnalyzer
         /// TestCase_4.2:throw exception when null
         /// </summary>
         [Fact]
-        public void CreatObjectusingRef_AnalyserMoodExceptionTest()
+        public void GiventheMoodmessage_WhenAnalyseMood_AnalyserMoodExceptionTest()
         {
             var ex = Assert.Throws<MoodAnalysisException>(() => MoodAnalyzerReflactor.CreateObjectUsingReflection("HappyHour"));
             Assert.Equal(ex.msg, Exception_type.No_Such_class_Exception.ToString());
@@ -85,7 +85,7 @@ namespace MoodAnalyzer
         /// UseCase_5.1:Creatobjectusings the reflection pass parametrized constructer.
         /// </summary>
         [Fact]
-        public void CreatobjectusingReflectionPassParametrizedConstructer()
+        public void GiventheMoodmessage_WhenAnalyseMood_CreatobjectusingReflectionPassParametrizedConstructer()
         {
             object reflactionobj = MoodAnalyzerReflactor.CreateObjectUsingReflection("MoodAnalyzer.MoodAnalyse", "I am in Happy Mood");
             MoodAnalyse moodobj = new MoodAnalyse();
@@ -97,7 +97,7 @@ namespace MoodAnalyzer
         /// UseCase_5.2:Whens the not proper classname through exception.
         /// </summary>
         [Fact]
-        public void WhenNotProperClassnameThroughException()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenNotProperClassnameThroughException()
         {
             var ex = Assert.Throws<MoodAnalysisException>(() => MoodAnalyzerReflactor.CreateObjectUsingReflection("Wrong class name", "I am in Happy Mood"));
             Assert.Equal(ex.msg, Exception_type.No_Such_class_Exception.ToString());
@@ -106,7 +106,7 @@ namespace MoodAnalyzer
         /// UseCase_5.3:Whens the not proper constructer name throw exception
         /// </summary>
         [Fact]
-        public void WhenNotProperConstructerNameThrowException()
+        public void GiventheMoodmessage_WhenAnalyseMood_WhenNotProperConstructerNameThrowException()
         {
             object Reflactionobject = MoodAnalyzerReflactor.CreateObjectUsingReflection("MoodAnalyzer.MoodAnalyse", 123);
             MoodAnalyse moodobj = new MoodAnalyse();
@@ -118,7 +118,7 @@ namespace MoodAnalyzer
         /// Invokes the method using reflection should return happy.
         /// </summary>
         [Fact]
-        public void InvokeMethodUsingReflection_shouldReturnHappy()
+        public void GiventheMoodmessage_WhenAnalyseMood_InvokeMethodUsingReflection_shouldReturnHappy()
         {
             string actual = MoodAnalyzerReflactor.InvokeMethodUsingReflection("MoodAnalyzer.MoodAnalyse", "message");
             string Expected = "HAPPY";
@@ -129,7 +129,7 @@ namespace MoodAnalyzer
         /// UseCAse_7.1:Sets the field value should return happy.
         /// </summary>
         [Fact]
-        public void SetFieldValue_shouldReturnHappy()
+        public void GiventheMoodmessage_WhenAnalyseMood_SetFieldValueshouldReturnHappy()
         {
             string actual = MoodAnalyzerReflactor.InvokeMethodUsingReflection("AnalyseMood", "message");
             string Expected = "HAPPY";
@@ -139,7 +139,7 @@ namespace MoodAnalyzer
         /// UseCAse_7.2:Sets the field value should return No_Such_Field_Exception.
         /// </summary>
         [Fact]
-        public void SetImproperField_throwException()
+        public void GiventheMoodmessage_WhenAnalyseMood_SetImproperFieldthrowException()
         {
             string actual = MoodAnalyzerReflactor.InvokeMethodUsingReflection("AnalyseMood", "Improper Field Name");
             string Expected = "No_Such_Field_Exception";
@@ -149,7 +149,7 @@ namespace MoodAnalyzer
         /// UseCAse_7.3:Sets the field value should return Null_Exception.
         /// </summary>
         [Fact]
-        public void SetNullField_throwException()
+        public void GiventheMoodnull_WhenAnalyseMood_SetNullFieldthrowException()
         {
             string actual = MoodAnalyzerReflactor.InvokeMethodUsingReflection("AnalyseMood", null);
             string Expected = "Null_Exception";
